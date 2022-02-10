@@ -1,0 +1,251 @@
+
+@import "vars.scss";
+@import "functions.scss";
+@import "buttons.scss";
+
+body
+{
+	background-color: $rdt-grey5;
+	font-family: $rdt-font-family;
+	font-size: $rdt-font-size;
+	margin: 0;
+	overflow-y: scroll; // force scrollbar to appear to eliminate jogging effect
+}
+
+.container
+{
+	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 40px 20px;
+}
+
+.title
+{
+	display: block;
+	font-size: 32px;
+	font-weight: bold;
+	margin-bottom: rdt-spacing(3);
+}
+
+.header
+{
+	align-items: center;
+	display: flex;
+
+	.header__image
+	{
+		display: block;
+		margin: rdt-spacing(0, 5, 5, 0);
+		max-width: 150px;
+
+		img
+		{
+			display: block;
+			height: auto;
+			width: 100%;
+		}
+	}
+
+	.header__body
+	{
+		font-size: 18px;
+	}
+
+	@media screen and (max-width: 800px) {
+		display: block;
+
+		.header__image
+		{
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 75px;
+		}
+
+		.header__body
+		{
+			text-align: center;
+		}
+	}
+}
+
+// re-usable panel component
+.panel
+{
+	background: white;
+	border-radius: $rdt-border-radius;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+	margin-bottom: rdt-unit2px(5);
+	position: relative;
+
+	.panel__title
+	{
+		//border-bottom: 1px solid $rdt-grey4;
+		font-size: 24px;
+		font-weight: 600;
+		line-height: 1em;
+		padding: rdt-spacing(3, 4);
+	}
+
+	.panel__body
+	{
+		padding: rdt-spacing(3, 4);
+	}
+}
+
+
+// define the CSS for the primary search panel widget
+.search-widget
+{
+	// style of actual search box
+	.search-widget__field
+	{
+		border: 1px solid $rdt-grey4;
+		background-color: white;
+		border-radius: $rdt-border-radius;
+		box-sizing: border-box;
+		display: block;
+		font-family: inherit;
+		font-size: 18px;
+		line-height: 1em;
+		margin: rdt-spacing(0, 0, 3, 0);
+		padding: rdt-spacing(3);
+		width: 100%;
+	}
+}
+
+.character-title
+{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: rdt-unit2px(4);
+}
+
+.info-fields
+{
+	//padding-bottom: rdt-unit2px(3);
+}
+
+// character info fields
+.info-line
+{
+	border-bottom: 1px solid $rdt-grey4;
+
+	&:last-child
+	{
+		border-bottom: none;
+	}
+
+	.info-line__label
+	{
+		color: $rdt-grey1;
+		//font-size: 16px;
+		font-weight: 300;
+		padding: rdt-spacing(3, 4);
+	}
+
+	.info-line__value
+	{
+		font-size: 18px;
+		padding: rdt-spacing(0, 4, 3, 4);
+	}
+}
+
+// column layout for character info
+.info-columns
+{
+	display: flex;
+	flex-flow: row wrap;
+	margin: rdt-spacing(0, -3, 5, -3);
+	position: relative;
+
+	.info-columns__col33,
+	.info-columns__col25
+	{
+		box-sizing: border-box;
+		padding: rdt-spacing(0, 3);
+		position: relative;
+	}
+
+	.info-columns__col33
+	{
+		width: 33.3%;
+	}
+
+	.info-columns__col25
+	{
+		width: 25%;
+	}
+
+	// add breakpoint for smaller displays
+	@media screen and (max-width: 800px) {
+		.info-columns__col33,
+		.info-columns__col25
+		{
+			width: 100%;
+		}
+	}
+}
+
+// loading spinner
+.loading-indicator
+{
+	.loading-indicator__spinner
+	{
+		//($duration, $background, $foreground, $border, $size)
+		@include make-spinner(1.25s, white, $rdt-color-primary, 8px, 60px);
+
+		margin: 0 auto;
+	}	
+}
+
+// clickable list options
+.menu
+{
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li
+	{
+		border-bottom: 1px solid $rdt-grey4;
+
+		&:last-child
+		{
+			border-bottom: none;
+		}
+	}
+
+	.menu__item
+	{
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: block;
+		font-size: 18px;
+		margin: 0;
+		padding: rdt-spacing(3, 4);
+		text-align: left;
+		text-decoration: none;
+		transition: all 0.4s;
+		width: 100%;
+
+
+		&:hover
+		{
+			background-color: $rdt-grey5;
+		}
+	}
+}
+
+// used by vue transition
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

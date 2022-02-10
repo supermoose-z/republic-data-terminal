@@ -1,0 +1,61 @@
+
+@function rdt-unit2px($units)
+{
+	@return $units * $rdt-unit-size;
+}
+
+@function rdt-spacing($values...)
+{
+	$result: ();
+
+	@for $i from 1 through length($values)
+	{
+		$val: rdt-unit2px(nth($values, $i));
+		$result: append($result, $val);
+	}
+
+	@return $result;
+}
+
+// spinner mixin
+@keyframes spin
+{
+	from
+	{ 
+		transform: rotateZ(0deg);
+	}
+
+	to
+	{ 
+		transform: rotateZ(360deg);
+	}
+}
+
+@mixin make-spinner($duration, $background, $foreground, $border, $size)
+{
+	animation-name: spin;
+	animation-duration: $duration;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	border: $border solid $background;
+	border-radius: 50%;
+	height: $size;
+	position: relative;
+	width: $size;
+
+	&:after
+	{
+		border-right: $border solid $foreground;
+		border-top: $border solid $foreground;
+		border-top-right-radius: 100%;
+		content: "";
+		display: block;
+		left: 50%;
+		height: $size / 2;
+		position: absolute;
+		top: -$border;
+		width: $size / 2;
+	}
+
+}

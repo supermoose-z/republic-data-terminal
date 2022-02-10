@@ -1,0 +1,62 @@
+
+// scss helpers to make buttons
+// see: https://www.joshwcomeau.com/animation/3d-button/
+@mixin make-button($bgColor, $textColor)
+{
+	background-color: darken($bgColor, 14%);
+	border: none;
+	border-radius: 6px;
+	color: $textColor;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 18px;
+	line-height: 1em;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	transition: all 0.4s;
+
+	.btn__front
+	{
+		background-color: $bgColor;
+		border-radius: 6px;
+		display: block;
+		padding: rdt-spacing(3, 5);
+		transform: translateY(-4px);
+		transition: all 0.25s;
+		will-change: transform;
+	}
+
+	&:hover .btn__front
+	{
+		transform: translateY(-6px);
+	}
+
+	&:active .btn__front
+	{
+		transform: translateY(-2px);
+	}
+
+	&:focus:not(:focus-visible)
+	{
+		outline: none;
+	}
+
+	&[disabled],
+	&:disabled
+	{
+		background-color: transparent !important;
+
+		.btn__front
+		{
+			background-color: $rdt-grey4 !important;
+			transform: none;
+		}
+	}
+}
+
+// basic default button
+.btn
+{
+	@include make-button($rdt-color-primary, white);
+}
