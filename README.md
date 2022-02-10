@@ -2,7 +2,7 @@ Republic Data Terminal
 ======================
 
 How to run locally
-------------------
+==================
 
 To run the project locally, make sure Node and Yarn are installed. Then run the following commands:
 
@@ -26,4 +26,22 @@ Or, just build the production scripts before running node index above
 
 `$ yarn build`
 
+Other notes
+==================
 
+To run on port 80, create an environment variable called RDT_ENV and set it to production; otherwise the app will default to port 3000.
+
+
+Project Structure
+==================
+
+- endpoints
+	- Scripts that implement various API endpoints, right now there's just one for /characters/:id
+- public
+	- Static frontend assets
+- src
+	- Vue/SASS source scripts
+- swapi
+	- Basic swapi.dev wrapper
+
+The bootstrap script is in index.js. This script is responsible for setting up the express.js instance and configuring routing/middleware.
