@@ -43,6 +43,11 @@ export default {
 			{
 				alerts.show('No ID# entered!', 'Oops!', 'warning');
 			}
+			// otherwise if its not a number display an error
+			else if (false || isNaN(id))
+			{
+				alerts.show('Please enter a numeric value', 'Oops', 'warning');
+			}
 			else
 			{
 				this.fetchCharacter(this.id);

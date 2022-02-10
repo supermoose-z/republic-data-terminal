@@ -10,6 +10,15 @@ const CharacterReader = require('../swapi/character');
 
 // look up a single character
 router.get('/:id', async (req, res, next) => {
+	var id = req.params.id || 0;
+
+	if (id == 0 || isNaN(id))
+	{
+		res.status(400);
+		res.send({ error: 'Invalid ID: ' + id });
+		return;
+	}
+
 	try
 	{
 		// initialize reader
