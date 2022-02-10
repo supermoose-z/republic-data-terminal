@@ -3,7 +3,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const port = process.env.RDT_ENV == 'production' ? 80 : 3000;
+const port = process.env.PORT || 3000;
 
 // get endpoint handlers
 const characters = require('./endpoints/characters');

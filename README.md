@@ -29,7 +29,7 @@ Or, just build the production scripts before running node index above
 Other notes
 ==================
 
-To run on port 80, create an environment variable called RDT_ENV and set it to production; otherwise the app will default to port 3000.
+To run on port 80, create an environment variable called PORT and set it to 80, otherwise it will default to 3000.
 
 
 Project Structure
