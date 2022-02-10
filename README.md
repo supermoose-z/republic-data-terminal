@@ -24,6 +24,6 @@ To enable updates to JavaScript changes using webpack --watch
 
 Or, just build the production scripts before running node index above
 
-`$yarn build`
+`$ yarn build`
 
 
